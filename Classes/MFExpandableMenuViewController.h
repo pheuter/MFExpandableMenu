@@ -16,7 +16,20 @@
 @property(nonatomic, weak) id <MFExpandableMenuDelegate> delegate;
 @property(nonatomic, weak) id <MFExpandableMenuDataSource> dataSource;
 
-@property(nonatomic) UIColor *cellFadeBaseColor;
+/**
+* Optionally set custom UIFont to use for each menu item
+*/
+@property(nonatomic) UIFont *customMenuItemFont;
+
+/**
+* Optionally set initial menu item background color to fade from
+*/
+@property(nonatomic) UIColor *customBackgroundFadeColor;
+
+/**
+* Optionally set custom UIColor to use for each menu item's label text
+*/
+@property(nonatomic) UIColor *customMenuItemTextColor;
 
 @end
 
@@ -28,12 +41,35 @@
 
 @required
 
+/**
+* Used by MenuViewController to determine how many menu items there are
+*
+* @param menuViewController MFExpandableMenuViewController instance
+*
+* @return An integer representing the number of menu items
+*/
 - (NSInteger)numberOfItemsInMenuViewController:(MFExpandableMenuViewController *)menuViewController;
 
+/**
+* Used by MenuViewController to determine the title to display for each menu item
+*
+* @param menuViewController MFExpandableMenuViewController instance
+* @param index              The index of the menu item. 0 represents the first menu item.
+*
+* @return A string representing the title of the menu item at given index
+*/
 - (NSString *)menuViewController:(MFExpandableMenuViewController *)menuViewController
-             titleForCellAtIndex:(NSInteger)index;
+         titleForMenuItemAtIndex:(NSInteger)index;
 
+/**
+* Used by MenuViewController to determine what UIView to show when a menu item is selected
+*
+* @param menuViewController MFExpandableMenuViewController instance
+* @param index              The index of the menu item. 0 represents the first menu item.
+*
+* @return A view that will show when the menu item at given index is selected
+*/
 - (UIView *)menuViewController:(MFExpandableMenuViewController *)menuViewController
-      detailViewForCellAtIndex:(NSInteger)index;
+  detailViewForMenuItemAtIndex:(NSInteger)index;
 
 @end

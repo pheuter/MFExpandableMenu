@@ -1,0 +1,9 @@
+platform :ios, '7.0'
+
+pod 'MFExpandableMenu', :path => "../MFExpandableMenu.podspec"
+
+target :DemoTests, :exclusive => true do
+  pod 'Specta',    '~> 0.2.1'
+  pod 'Expecta',   '~> 0.3.0'
+  pod 'OCMockito', '~> 1.1'
+end

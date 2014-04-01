@@ -13,7 +13,6 @@
   UILabel *_titleLabel;
 }
 
-@property(readonly) UILabel *titleLabel;
 @property(nonatomic) MASConstraint *titleConstraint;
 
 @end
@@ -41,10 +40,8 @@
   if (!_titleLabel) {
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.adjustsFontSizeToFitWidth = YES;
-    _titleLabel.font = [UIFont systemFontOfSize:42];
+    _titleLabel.font = [UIFont systemFontOfSize:32];
     _titleLabel.textColor = [UIColor whiteColor];
-    _titleLabel.shadowOffset = CGSizeMake(0, 2);
-    _titleLabel.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
   }
 
   return _titleLabel;

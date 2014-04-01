@@ -30,8 +30,8 @@
   self = [super init];
 
   if (self) {
-    if (!self.cellFadeBaseColor) {
-      self.cellFadeBaseColor = [UIColor grayColor];
+    if (!self.customBackgroundFadeColor) {
+      self.customBackgroundFadeColor = [UIColor grayColor];
     }
   }
 
@@ -96,10 +96,25 @@
   CellView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell"
                                                              forIndexPath:indexPath];
 
-  CGFloat amount = [[NSString stringWithFormat:@"1.%d", indexPath.row] floatValue];
-  cell.backgroundColor = [UIColor changeBrightness:self.cellFadeBaseColor amount:amount];
+  if (self.customMenuItemFont)
+    cell.titleLabel.font = self.customMenuItemFont;
+
+  if (self.customMenuItemTextColor)
+    cell.titleLabel.textColor = self.customMenuItemTextColor;
+
+  NSInteger numItems = [self.dataSource numberOfItemsInMenuViewController:self];
+  NSInteger inc;
+
+  if (numItems < 5) {
+    inc = 2;
+  } else {
+    inc = 1;
+  }
+
+  CGFloat amount = [[NSString stringWithFormat:@"1.%d", (indexPath.row * inc)] floatValue];
+  cell.backgroundColor = [UIColor changeBrightness:self.customBackgroundFadeColor amount:amount];
   cell.title = [self.dataSource menuViewController:self
-                               titleForCellAtIndex:indexPath.row];
+                           titleForMenuItemAtIndex:indexPath.row];
 
   return cell;
 }
@@ -119,7 +134,7 @@
   self.selectedCellIndex = indexPath.row;
 
   [cell focusWithView:[self.dataSource menuViewController:self
-                                 detailViewForCellAtIndex:self.selectedCellIndex]];
+                             detailViewForMenuItemAtIndex:self.selectedCellIndex]];
   [collectionView setCollectionViewLayout:self.detailFlowLayout animated:YES];
   collectionView.scrollEnabled = NO;
 }
