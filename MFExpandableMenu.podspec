@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name             = "MFExpandableMenu"
   s.version          = "0.0.1"
   s.summary          = "An expandable menu for iOS 7 with transitions and styling"
-  s.homepage         = "http://pheuter.github.io/MFExpandableMenu"
+  s.homepage         = "https://github.com/pheuter/MFExpandableMenu"
   s.license          = 'MIT'
   s.author           = { "Mark Fayngersh" => "phunny.phacts@gmail.com" }
   s.source           = { :git => "https://github.com/pheuter/MFExpandableMenu.git", :tag => s.version.to_s }

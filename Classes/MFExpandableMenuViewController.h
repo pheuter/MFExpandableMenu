@@ -35,6 +35,27 @@
 
 @protocol MFExpandableMenuDelegate <NSObject>
 
+@optional
+
+/**
+* Tells the delegate that the item at the specified index was selected and will show the detail view.
+*
+* @param menuViewController MFExpandableMenuViewController instance
+* @param index              The index of the menu item that will expand into the detail view
+*/
+- (void)          menuViewController:(MFExpandableMenuViewController *)menuViewController
+willShowDetailViewForMenuItemAtIndex:(NSInteger)index;
+
+/**
+* Tells the delegate that the item at the specified index was selected and will hide the detail view, returning to the
+* list of menu items.
+*
+* @param menuViewController MFExpandableMenuViewController instance
+* @param index              The index of the menu item that was in detail
+*/
+- (void)          menuViewController:(MFExpandableMenuViewController *)menuViewController
+willHideDetailViewForMenuItemAtIndex:(NSInteger)index;
+
 @end
 
 @protocol MFExpandableMenuDataSource <NSObject>

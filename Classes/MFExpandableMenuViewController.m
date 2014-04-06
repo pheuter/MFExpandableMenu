@@ -125,6 +125,9 @@
   CellView *cell = (CellView *) [self.collectionView cellForItemAtIndexPath:indexPath];
 
   if (self.selectedCellIndex == indexPath.row) {
+    if ([self.delegate respondsToSelector:@selector(menuViewController:willHideDetailViewForMenuItemAtIndex:)])
+      [self.delegate menuViewController:self willHideDetailViewForMenuItemAtIndex:indexPath.row];
+
     self.selectedCellIndex = -1;
     [cell unfocus];
     [collectionView setCollectionViewLayout:self.listFlowLayout animated:YES];
@@ -133,13 +136,16 @@
 
   self.selectedCellIndex = indexPath.row;
 
+  if ([self.delegate respondsToSelector:@selector(menuViewController:willShowDetailViewForMenuItemAtIndex:)])
+    [self.delegate menuViewController:self willShowDetailViewForMenuItemAtIndex:self.selectedCellIndex];
+
   [cell focusWithView:[self.dataSource menuViewController:self
                              detailViewForMenuItemAtIndex:self.selectedCellIndex]];
   [collectionView setCollectionViewLayout:self.detailFlowLayout animated:YES];
   collectionView.scrollEnabled = NO;
 }
 
-#pragma mark - UICollectionViewDelegateFlowLayout
+#pragma mark - UICollectionViewDelegateFlowLayout Methods
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

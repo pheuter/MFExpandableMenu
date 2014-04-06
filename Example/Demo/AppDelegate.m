@@ -72,7 +72,7 @@
 
 - (NSString *)menuViewController:(MFExpandableMenuViewController *)menuViewController
          titleForMenuItemAtIndex:(NSInteger)index1 {
-  return [NSString stringWithFormat:@"Menu Item %d", index1];
+  return [NSString stringWithFormat:@"Menu Item %d", index1 + 1];
 }
 
 - (UIView *)menuViewController:(MFExpandableMenuViewController *)menuViewController
@@ -80,5 +80,16 @@
   return self.customView;
 }
 
+#pragma mark - MFExpandableMenuDelegate Methods
+
+- (void)          menuViewController:(MFExpandableMenuViewController *)menuViewController
+willShowDetailViewForMenuItemAtIndex:(NSInteger)index {
+  NSLog(@"Showing detail view for menu item at index: %i", index);
+}
+
+- (void)          menuViewController:(MFExpandableMenuViewController *)menuViewController
+willHideDetailViewForMenuItemAtIndex:(NSInteger)index {
+  NSLog(@"Hiding detail view for menu item at index: %i", index);
+}
 
 @end

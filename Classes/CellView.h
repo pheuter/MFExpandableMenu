@@ -11,7 +11,7 @@
 @interface CellView : UICollectionViewCell
 
 @property(nonatomic) NSString *title;
-@property(nonatomic) UIColor *backgroundColor;
+@property(nonatomic, copy) UIColor *backgroundColor;
 @property(readonly) UILabel *titleLabel;
 
 - (void)focusWithView:(UIView *)view;
