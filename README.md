@@ -9,8 +9,6 @@ MFExpandableMenu is an expandable menu for iOS 7 with transitions and styling.
 
 ## Installation
 
-**Note: Currently not yet pushed to CocoaPods repo**
-
 MFExpandableMenu is available through [CocoaPods](http://cocoapods.org), to install
 it simply add the following line to your Podfile:
 
