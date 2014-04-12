@@ -1,5 +1,7 @@
 # MFExpandableMenu
 
+[![Version](http://cocoapod-badges.herokuapp.com/v/MFExpandableMenu/badge.png)](http://cocoadocs.org/docsets/MFExpandableMenu)
+
 MFExpandableMenu is an expandable menu for iOS 7 with transitions and styling.
 
 - Automatically lighten menu items given base color
